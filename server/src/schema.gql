@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  email: String!
+  name: String
+  notes: [Note!]
+}
+
+type Tag {
+  id: Int!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  name: String!
+  notes: [Note!]
+  user: User
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
+
+type Note {
+  id: Int!
+  createdAt: Timestamp!
+  updatedAt: Timestamp!
+  content: String
+  textColor: String
+  cardColor: String
+  user: User
+  tags: [Tag!]
+}
+
+type Query {
+  findUserByEmail(email: String!): User
+  allUsers: [User!]
+  noteById(id: Float!): Note
+  myNotes(searchString: String, email: String!): [Note!]
+  tagById(id: Float!): Tag
+}
+
+type Mutation {
+  signUpUser(data: UserCreateInput!): User!
+  createNote(data: NoteCreateInput!, userEmail: String!): Note!
+  editNote(noteId: Float!, data: NoteUpdateInput!): Note!
+  deleteNote(noteId: Float!, userEmail: String!): Note
+}
+
+input UserCreateInput {
+  email: String!
+  name: String
+  notes: [NoteCreateInput!]
+}
+
+input NoteCreateInput {
+  content: String
+  textColor: String
+  cardColor: String
+  tags: [TagCreateInput!]
+}
+
+input TagCreateInput {
+  name: String!
+}
+
+input NoteUpdateInput {
+  content: String
+  textColor: String
+  cardColor: String
+  tags: [TagCreateInput!]
+}
