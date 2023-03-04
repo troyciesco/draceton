@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { createContext, useContext, useEffect, useState } from "react"
+import { Context, createContext, useContext, useEffect, useState } from "react"
 import { useSWRConfig } from "swr"
 import { useCookie } from "./useCookie"
 
@@ -15,6 +15,12 @@ const fakeAuth = {
   },
 }
 
+type AuthProps = {
+  user: string | null
+  isAuthLoading: boolean
+  handleLogin: any
+  handleLogout: any
+}
 export const AuthContext = createContext({
   user: "",
   isAuthLoading: false,
