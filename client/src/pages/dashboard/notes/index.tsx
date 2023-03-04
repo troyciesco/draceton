@@ -53,7 +53,7 @@ export default function Dashboard() {
     if (!(user || isAuthLoading)) {
       router.push("/")
     }
-  }, [user, isAuthLoading])
+  }, [user, isAuthLoading, router])
 
   const [, cancel] = useDebounce(
     () => {

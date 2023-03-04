@@ -35,7 +35,7 @@ export function useProvideAuth() {
   useEffect(() => {
     setUser(getCookie("activeUser"))
     setIsAuthLoading(false)
-  }, [])
+  }, [getCookie])
 
   const router = useRouter()
 
