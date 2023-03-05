@@ -6,11 +6,12 @@ import { UserResolver } from "@/resolvers/user.resolvers"
 import { TagResolver } from "@/resolvers/tag.resolvers"
 import { join } from "path"
 import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo"
+import { ConfigModule } from "@nestjs/config"
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      cors: false,
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
       buildSchemaOptions: { dateScalarMode: "timestamp" },
