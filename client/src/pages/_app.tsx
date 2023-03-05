@@ -1,5 +1,5 @@
 import "@/styles/globals.scss"
-import { Lato, Goudy_Bookletter_1911 } from "next/font/google"
+import { Lato, Goudy_Bookletter_1911, Creepster } from "next/font/google"
 import type { AppProps } from "next/app"
 import AuthProvider from "@/AuthProvider"
 import dynamic from "next/dynamic"
@@ -17,12 +17,21 @@ const lato = Lato({
   display: "swap",
   variable: "--font-lato",
 })
+
 const goudy = Goudy_Bookletter_1911({
   weight: ["400"],
   style: ["normal"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-goudy",
+})
+
+const creepster = Creepster({
+  weight: ["400"],
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-creepster",
 })
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -36,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
         :root {
           --font-lato: ${lato.style.fontFamily};
           --font-goudy: ${goudy.style.fontFamily};
+          --font-creepster: ${creepster.style.fontFamily};
         }
       `}</style>
       <NextNProgress

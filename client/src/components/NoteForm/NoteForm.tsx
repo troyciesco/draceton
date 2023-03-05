@@ -92,7 +92,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
             disabled={isMutating || isInvalidEntry}
             type="submit"
             className="flex items-center gap-1 px-4 py-2 text-white bg-blue-500 rounded-lg cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed">
-            {submitButtonText}
+            {isMutating ? "Submitting..." : submitButtonText}
           </button>
         </div>
       </div>

@@ -5,8 +5,8 @@ module.exports = {
   darkMode: "class",
   safelist: [
     {
-      pattern: /(text|bg)-(slate|amber|emerald|sky|violet|rose|white)-(200|700)/,
-      variants: ["lg", "hover", "focus", "lg:hover", "dark"],
+      pattern: /(text|bg|shadow)-(slate|amber|emerald|sky|violet|rose)-(200|700)/,
+      variants: ["hover", "focus", "dark"],
     },
   ],
   theme: {
@@ -14,7 +14,7 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-lato)", ...fontFamily.sans],
         serif: ["var(--font-goudy)", ...fontFamily.serif],
-        heading: ["var(--font-interAccent)", ...fontFamily.serif],
+        creepster: ["var(--font-creepster)", ...fontFamily.serif],
       },
     },
   },

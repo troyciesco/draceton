@@ -22,7 +22,7 @@ export default function Dashboard() {
   const [isTyping, setIsTyping] = useState(false)
 
   const variables = { searchString: debouncedSearchString, email: user }
-  const { data, error, isLoading } = useSWR<Record<"myNotes", Note[]>>(
+  const { data, isLoading } = useSWR<Record<"myNotes", Note[]>>(
     user ? { query: myNotesQuery, variables } : null,
     fetcher
   )
@@ -72,7 +72,7 @@ export default function Dashboard() {
               Add New Note <PlusIcon className="w-6 h-6" />
             </Link>
           </div>
-          <section className="flex items-center max-w-3xl gap-4 mx-auto mb-5">
+          <section className="flex items-center max-w-3xl gap-4 mx-auto mb-10">
             {!(data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString) && (
               <label className="w-full">
                 <span className="sr-only">Search Notes</span>

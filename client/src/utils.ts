@@ -45,5 +45,5 @@ export const colors = [
   // "fuchsia",
   // "pink",
   "rose",
-  "white",
+  // "white",
 ]
