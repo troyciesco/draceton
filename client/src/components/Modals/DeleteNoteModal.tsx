@@ -15,7 +15,7 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
   const { user } = useAuth()
 
   const variables = { noteId: note.id, email: user }
-  const { trigger, isMutating, data } = useSWRMutation({ query: deleteNoteMutation, variables }, fetcher, {
+  const { trigger, isMutating } = useSWRMutation({ query: deleteNoteMutation, variables }, fetcher, {
     onSuccess: () => {
       console.log("success")
       onClose({ revalidate: true })

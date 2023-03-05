@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { Note } from "@/types"
 import { fetcher } from "@/utils"
 import useSWR from "swr"
 import { BaseModal } from "./BaseModal"
-import useSWRMutation from "swr/mutation"
 import { noteQuery } from "@/gql/queries"
 import { editNoteMutation } from "@/gql/mutations"
 import { NoteForm } from "../NoteForm"
+import { LoadingRing } from "@/components/LoadingRing"
 
 type EditNoteModalProps = {
   isOpen: boolean
@@ -19,7 +18,10 @@ function EditNoteModal({ isOpen, onClose }: EditNoteModalProps) {
   const shouldFetch = router.query.editNote
   // @ts-ignore
   const variables = { noteId: parseInt(router.query.editNote) }
-  const { data } = useSWR<Record<"noteById", Note>>(shouldFetch ? { query: noteQuery, variables } : null, fetcher)
+  const { data, isLoading } = useSWR<Record<"noteById", Note>>(
+    shouldFetch ? { query: noteQuery, variables } : null,
+    fetcher
+  )
 
   const handleClose = () => {
     onClose({ revalidate: false })
@@ -33,13 +35,17 @@ function EditNoteModal({ isOpen, onClose }: EditNoteModalProps) {
       isOpen={isOpen}
       onClose={handleClose}
       title="Edit Note">
-      <NoteForm
-        initialData={data?.noteById}
-        mutation={editNoteMutation}
-        baseMutationVariables={baseMutationVariables}
-        onClose={onClose}
-        submitButtonText="Update Note"
-      />
+      {isLoading ? (
+        <LoadingRing />
+      ) : (
+        <NoteForm
+          initialData={data?.noteById}
+          mutation={editNoteMutation}
+          baseMutationVariables={baseMutationVariables}
+          onClose={onClose}
+          submitButtonText="Update Note"
+        />
+      )}
     </BaseModal>
   )
 }
