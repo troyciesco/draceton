@@ -1,5 +1,4 @@
-import React from "react"
-import { ThemeToggle } from "./ThemeToggle"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 function Footer() {
   return (

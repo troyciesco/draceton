@@ -54,8 +54,8 @@ export function useProvideAuth() {
   }
 
   const handleLogout = ({ shouldRedirect = true }): void => {
+    removeCookie("activeUser")
     return fakeAuth.signout(() => {
-      removeCookie("activeUser")
       mutate(
         (key) => true, // which cache keys are updated
         undefined, // update cache data to `undefined`

@@ -1,6 +1,8 @@
-import { SignIn } from "@/components/SignIn"
 import { useAuth } from "@/hooks/useAuth"
+import dynamic from "next/dynamic"
 import Head from "next/head"
+
+const Auth = dynamic(() => import("../components/Auth").then((mod) => mod.Auth), { ssr: false })
 
 export default function Home() {
   const { user, handleLogin, handleLogout } = useAuth()
@@ -30,15 +32,15 @@ export default function Home() {
         />
       </Head>
       <main>
-        <section className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] bg-slate-800 px-2">
-          <h1 className="mb-10 font-serif text-center text-white text-7xl">
+        <section className="flex flex-col items-center justify-center min-h-[80vh] px-2 bg-white dark:bg-slate-800">
+          <h1 className="mb-10 font-serif text-center dark:text-white text-7xl">
             Note-taking so good
             <br />
             <span className="text-red-600">it's scary</span>
           </h1>
-          <SignIn />
+          <Auth />
           <div className="mt-10">
-            <h2 className="text-white">Demo Accounts</h2>
+            <h2 className="dark:text-white">Demo Accounts</h2>
             <div className="flex items-center gap-4">
               <button
                 onClick={() => switchUser("jonathan.harker@mailinator.com")}

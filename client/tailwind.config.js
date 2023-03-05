@@ -5,8 +5,7 @@ module.exports = {
   darkMode: "class",
   safelist: [
     {
-      pattern:
-        /(text|bg)-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose|white)-(200|700)/,
+      pattern: /(text|bg)-(slate|amber|emerald|sky|violet|rose|white)-(200|700)/,
       variants: ["lg", "hover", "focus", "lg:hover", "dark"],
     },
   ],

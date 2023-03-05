@@ -9,3 +9,15 @@
 body {
   @apply bg-white dark:bg-slate-800;
 }
+
+.drac {
+  &-radius {
+    @apply rounded-lg;
+  }
+  &-shadow {
+    @apply shadow-lg;
+  }
+  &-text {
+    @apply text-slate-800 dark:text-white;
+  }
+}

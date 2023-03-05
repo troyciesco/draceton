@@ -1,32 +1,17 @@
-import { CreateNoteModal } from "@/components/CreateNoteModal"
-import { EditNoteModal } from "@/components/EditNoteModal"
+import { CreateNoteModal, EditNoteModal } from "@/components/Modals"
 import { LoadingCards } from "@/components/LoadingCards"
 import { NoteCard } from "@/components/NoteCard"
 import { useAuth } from "@/hooks/useAuth"
 import { Note } from "@/types"
 import { fetcher } from "@/utils"
 import { PlusIcon } from "@heroicons/react/20/solid"
-import { gql } from "graphql-request"
 import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import { useDebounce } from "react-use"
 import useSWR, { useSWRConfig } from "swr"
-
-const myNotesQuery = gql`
-  query MyNotesQuery($searchString: String, $email: String!) {
-    myNotes(searchString: $searchString, email: $email) {
-      id
-      content
-      textColor
-      cardColor
-      tags {
-        name
-      }
-    }
-  }
-`
+import { myNotesQuery } from "@/gql/queries"
 
 export default function Dashboard() {
   const router = useRouter()
@@ -93,7 +78,7 @@ export default function Dashboard() {
                 <span className="sr-only">Search Notes</span>
                 <input
                   type="text"
-                  className="w-full rounded-lg"
+                  className="w-full bg-white rounded-lg dark:bg-white/5"
                   value={searchString}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setIsTyping(true)

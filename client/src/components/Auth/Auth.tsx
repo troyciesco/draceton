@@ -21,7 +21,7 @@ const findUserQuery = gql`
   }
 `
 
-function SignIn() {
+function Auth() {
   const { user, handleLogin, handleLogout } = useAuth()
   const [email, setEmail] = useState<string>("")
 
@@ -71,4 +71,4 @@ function SignIn() {
   )
 }
 
-export { SignIn }
+export { Auth }

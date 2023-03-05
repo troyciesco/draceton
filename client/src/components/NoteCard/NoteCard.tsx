@@ -3,7 +3,7 @@ import { classNames } from "@/utils"
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/20/solid"
 import Link from "next/link"
 import { useState } from "react"
-import { DeleteNoteModal } from "../DeleteNoteModal"
+import { DeleteNoteModal } from "@/components/Modals"
 
 type NoteCardProps = {
   note: Note
