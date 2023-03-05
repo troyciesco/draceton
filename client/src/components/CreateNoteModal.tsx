@@ -78,8 +78,10 @@ function CreateNoteModal({ isOpen, onClose }: CreateNoteModalProps) {
             onChange={setTextColor}>
             <div className="relative mt-1">
               <Listbox.Label>Text Color</Listbox.Label>
-              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                <span className={classNames("block truncate", `text-${textColor}-700`)}>{textColor}</span>
+              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-white rounded-lg shadow-md cursor-default dark:bg-slate-800 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                <span className={classNames("block truncate", `text-${textColor}-700 dark:text-${textColor}-200`)}>
+                  {textColor}
+                </span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <ChevronUpDownIcon
                     className="w-5 h-5 text-gray-400"
@@ -129,7 +131,7 @@ function CreateNoteModal({ isOpen, onClose }: CreateNoteModalProps) {
               <Listbox.Button
                 className={classNames(
                   "relative w-full py-2 pl-3 pr-10 text-left rounded-lg shadow-md cursor-default focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm",
-                  `bg-${cardColor}-200`
+                  `bg-${cardColor}-200 dark:bg-${cardColor}-700`
                 )}>
                 <span className="block truncate">{cardColor}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">

@@ -30,7 +30,7 @@ export default function Home() {
         />
       </Head>
       <main>
-        <section className="flex flex-col items-center justify-center h-[calc(100vh-56px)] bg-slate-800">
+        <section className="flex flex-col items-center justify-center min-h-[calc(100vh-56px)] bg-slate-800 px-2">
           <h1 className="mb-10 font-serif text-center text-white text-7xl">
             Note-taking so good
             <br />

@@ -38,7 +38,7 @@ function NoteCard({ note, onRevalidate }: NoteCardProps) {
           })}
         </div>
         <p className={classNames("break-words", `text-${note.textColor}-700`)}>{note.content}</p>
-        <div className="absolute flex gap-2 transition-all opacity-0 group-hover:opacity-100 bottom-4 right-4">
+        <div className="absolute flex gap-2 transition-all opacity-100 lg:opacity-0 group-hover:opacity-100 bottom-4 right-4">
           <Link
             href={`/dashboard/notes?editNote=${note.id}`}
             className="cursor-pointer">

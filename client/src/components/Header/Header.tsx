@@ -32,7 +32,11 @@ function Header() {
           </>
         )}
       </header>
-      <p className="block pt-2 text-center text-slate-800 md:hidden">You are signed in as {user}</p>
+      {user && (
+        <div className="bg-slate-800">
+          <p className="block pt-2 text-center text-white md:hidden">You are signed in as {user}</p>
+        </div>
+      )}
     </>
   )
 }

@@ -4,6 +4,8 @@ import type { AppProps } from "next/app"
 import AuthProvider from "@/AuthProvider"
 import dynamic from "next/dynamic"
 import NextNProgress from "nextjs-progressbar"
+import { ThemeProvider } from "next-themes"
+import { Footer } from "@/components/Footer"
 
 // Keeps the localstorage auth fetch from causing an SSR hydration error
 const Header = dynamic(() => import("../components/Header").then((mod) => mod.Header), { ssr: false })
@@ -25,7 +27,9 @@ const goudy = Goudy_Bookletter_1911({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider
+      enableSystem={true}
+      attribute="class">
       <style
         jsx
         global>{`
@@ -42,9 +46,14 @@ export default function App({ Component, pageProps }: AppProps) {
         showOnShallow={true}
       />
       <AuthProvider>
-        <Header />
-        <Component {...pageProps} />
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-grow">
+            <Component {...pageProps} />
+          </div>
+          <Footer />
+        </div>
       </AuthProvider>
-    </>
+    </ThemeProvider>
   )
 }
