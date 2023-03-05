@@ -12,16 +12,17 @@ import { useEffect, useState } from "react"
 import { useDebounce } from "react-use"
 import useSWR, { useSWRConfig } from "swr"
 import { myNotesQuery } from "@/gql/queries"
+import { Search } from "@/components/Search"
 
 export default function Dashboard() {
   const router = useRouter()
   const { mutate } = useSWRConfig()
   const { user, isAuthLoading } = useAuth()
-  const [searchString, setSearchString] = useState("")
+
   const [debouncedSearchString, setDebouncedSearchString] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
 
   const variables = { searchString: debouncedSearchString, email: user }
+
   const { data, isLoading } = useSWR<Record<"myNotes", Note[]>>(
     user ? { query: myNotesQuery, variables } : null,
     fetcher
@@ -40,14 +41,7 @@ export default function Dashboard() {
     }
   }, [user, isAuthLoading, router])
 
-  const [, cancel] = useDebounce(
-    () => {
-      setIsTyping(false)
-      setDebouncedSearchString(searchString)
-    },
-    500,
-    [searchString]
-  )
+  const shouldShowSearch = !(data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString)
 
   return !user || isAuthLoading ? null : (
     <>
@@ -73,29 +67,11 @@ export default function Dashboard() {
             </Link>
           </div>
           <section className="flex items-center max-w-3xl gap-4 mx-auto mb-10">
-            {!(data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString) && (
-              <label className="w-full">
-                <span className="sr-only">Search Notes</span>
-                <input
-                  type="text"
-                  className="w-full bg-white rounded-lg dark:bg-white/5"
-                  value={searchString}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setIsTyping(true)
-                    setSearchString(e.currentTarget.value)
-                  }}
-                  placeholder="Search note content..."
-                />
-              </label>
-            )}
-            {(isTyping || isLoading) && (
-              <div className="flex items-center justify-center">
-                <div
-                  className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-                  role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-              </div>
+            {shouldShowSearch && (
+              <Search
+                setDebouncedSearchString={setDebouncedSearchString}
+                isLoading={isLoading}
+              />
             )}
           </section>
           <section className="mb-20">

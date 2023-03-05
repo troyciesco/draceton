@@ -1,17 +1,9 @@
 import { useAuth } from "@/hooks/useAuth"
 import { BaseModal } from "./BaseModal"
 import useSWRMutation from "swr/mutation"
-import { gql } from "graphql-request"
 import { classNames, fetcher } from "@/utils"
 import { Note } from "@/types"
-
-const deleteNoteMutation = gql`
-  mutation DeleteNoteMutation($noteId: Float!, $email: String!) {
-    deleteNote(noteId: $noteId, userEmail: $email) {
-      id
-    }
-  }
-`
+import { deleteNoteMutation } from "@/gql/mutations"
 
 type DeleteNoteModalProps = {
   isOpen: boolean
@@ -42,7 +34,7 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
       title="Are you sure?"
       description="This note will be permanently deleted.">
       <div className={classNames("relative px-8 py-10 rounded-lg shadow-lg w-80 mx-auto", `bg-${note.cardColor}-200`)}>
-        <p className={classNames(`text-${note.textColor}-700`)}>{note.content}</p>
+        <p className={classNames("break-words", `text-${note.textColor}-700`)}>{note.content}</p>
       </div>
 
       <div className="flex justify-end gap-4 mt-8">
@@ -57,7 +49,7 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
           type="button"
           onClick={handleDelete}
           className="flex items-center gap-1 px-4 py-2 text-white bg-red-500 rounded-lg cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed">
-          Delete Note
+          {isMutating ? "Deleting..." : "Delete Note"}
         </button>
       </div>
     </BaseModal>

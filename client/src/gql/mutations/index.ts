@@ -17,3 +17,11 @@ export const editNoteMutation = gql`
     }
   }
 `
+
+export const deleteNoteMutation = gql`
+  mutation DeleteNoteMutation($noteId: Float!, $email: String!) {
+    deleteNote(noteId: $noteId, userEmail: $email) {
+      id
+    }
+  }
+`
