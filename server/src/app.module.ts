@@ -10,9 +10,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo"
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      cors: {
-        origin: true,
-      },
+      cors: false,
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
       buildSchemaOptions: { dateScalarMode: "timestamp" },
