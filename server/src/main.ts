@@ -9,5 +9,6 @@ async function bootstrap() {
 ⭐️ See sample queries: http://pris.ly/e/ts/graphql-nestjs#using-the-graphql-api
 `)
   })
+  console.log(`Application is running on: ${await app.getUrl()}`)
 }
 bootstrap()
