@@ -46,7 +46,7 @@ function Auth() {
         <input
           type="text"
           name="email"
-          className="w-full bg-white shadow-sm drac-radius bg-slate-500/20 shadow-slate-400/70 border-slate-500 placeholder:text-slate-400"
+          className="w-full shadow-sm drac-radius bg-slate-500/20 shadow-slate-400/70 border-slate-500 placeholder:text-slate-400"
           value={email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           placeholder="Enter your email"
