@@ -7,7 +7,7 @@ Draceton is a simple demo of a full-stack note-taking application with a little 
 
 **IMPORTANT: Authentication is faked to make testing a bunch of accounts easier. Because of this, you shouldn't save anything real to the database, and there might be a little jumpiness when logging in and logging out since it doesn't have to make a network request.**
 
-Features include:
+## Features
 - Users can create, edit, and delete notes. They can also change the text and background colors of the notes.
 - Users can search the content of the notes.
 - Notes must be between 20 and 300 characters.
@@ -19,13 +19,13 @@ Features include:
 - The backend uses Nest.js, GraphQL, TypeScript, and a SQLite database. I deployed it on Railway. Normally I'd set up a Postgres database, but I decided to keep it simple for this iteration.
 - Since it's all the rage nowadays and it's Dracula-themed, there's also dark mode 🌝
 
-To run the frontend after cloning this repo:
+## Running the frontend
 1. `cd client`
 2. copy `.env.example` to `.env` and update the values (right now, it's just public URLs, so it's fine to just copy)
 3. `yarn install`
 4. `yarn dev`, and it should run on port 3000.
 
-To run the backend after cloning this repo:
+## Running the backend
 1. `cd client`
 2. copy `.env.example` to `.env` and update the values (right now, it's just public URLs, so it's fine to just copy)
 3. `yarn install`
