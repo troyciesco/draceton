@@ -1,6 +1,7 @@
 import { GraphQLClient } from "graphql-request"
 
-export const api = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL || "", { headers: { credentials: "include" } })
+export const api = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL || "")
+// export const api = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL || "", { headers: { credentials: "include" } })
 
 // @ts-ignore
 export const fetcher: any = async ({ query, variables }) => {
