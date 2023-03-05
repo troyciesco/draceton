@@ -49,9 +49,6 @@ const userData: Prisma.UserCreateInput[] = [
   {
     name: "Jonathan Harker",
     email: "jonathan.harker@mailinator.com",
-    tags: {
-      create: [{ name: "Ch. 1" }],
-    },
     notes: {
       create: jh,
     },
@@ -63,9 +60,6 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           content: "https://slack.prisma.io",
-          tags: {
-            create: [{ name: "test tag" }],
-          },
         },
       ],
     },
@@ -77,9 +71,6 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           content: "https://slack.prisma.io",
-          tags: {
-            create: [{ name: "test tag" }],
-          },
         },
       ],
     },
@@ -91,9 +82,6 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           content: "https://slack.prisma.io",
-          tags: {
-            create: [{ name: "test tag" }],
-          },
         },
       ],
     },
@@ -105,9 +93,6 @@ const userData: Prisma.UserCreateInput[] = [
       create: [
         {
           content: "https://slack.prisma.io",
-          tags: {
-            create: [{ name: "test tag" }],
-          },
         },
       ],
     },

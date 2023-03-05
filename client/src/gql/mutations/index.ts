@@ -5,9 +5,6 @@ export const createNoteMutation = gql`
     createNote(data: { content: $content, textColor: $textColor, cardColor: $cardColor }, userEmail: $email) {
       id
       content
-      tags {
-        name
-      }
     }
   }
 `
@@ -17,9 +14,6 @@ export const editNoteMutation = gql`
     editNote(data: { content: $content, textColor: $textColor, cardColor: $cardColor }, noteId: $noteId) {
       id
       content
-      tags {
-        name
-      }
     }
   }
 `

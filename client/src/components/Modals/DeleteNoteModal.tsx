@@ -42,17 +42,6 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
       title="Are you sure?"
       description="This note will be permanently deleted.">
       <div className={classNames("relative px-8 py-10 rounded-lg shadow-lg w-80 mx-auto", `bg-${note.cardColor}-200`)}>
-        <div className="flex gap-2 mb-2">
-          {note.tags.map((tag) => {
-            return (
-              <span
-                key={tag.name}
-                className="px-2 py-1 text-xs font-bold text-blue-700 bg-blue-200 rounded-full">
-                {tag.name}
-              </span>
-            )
-          })}
-        </div>
         <p className={classNames(`text-${note.textColor}-700`)}>{note.content}</p>
       </div>
 

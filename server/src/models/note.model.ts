@@ -1,7 +1,6 @@
 import "reflect-metadata"
 import { ObjectType, Field, ID, Int } from "@nestjs/graphql"
 import { User } from "./user.model"
-import { Tag } from "./tag.model"
 
 @ObjectType()
 export class Note {
@@ -25,7 +24,4 @@ export class Note {
 
   @Field((type) => User, { nullable: true })
   user?: User | null
-
-  @Field((type) => [Tag], { nullable: true })
-  tags?: [Tag] | null
 }

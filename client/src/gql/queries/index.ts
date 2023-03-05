@@ -7,9 +7,6 @@ export const noteQuery = gql`
       content
       textColor
       cardColor
-      tags {
-        name
-      }
     }
   }
 `
@@ -21,9 +18,6 @@ export const myNotesQuery = gql`
       content
       textColor
       cardColor
-      tags {
-        name
-      }
     }
   }
 `

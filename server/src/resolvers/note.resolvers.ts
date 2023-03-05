@@ -15,8 +15,6 @@ import { Inject } from "@nestjs/common"
 import { Note } from "@/models/note.model"
 import { User } from "@/models/user.model"
 import { PrismaService } from "@/prisma.service"
-import { TagCreateInput } from "./tag.resolvers"
-import { Tag } from "@/models/tag.model"
 import { UserInputError } from "apollo-server-express"
 
 @InputType()
@@ -29,9 +27,6 @@ export class NoteCreateInput {
 
   @Field({ nullable: true })
   cardColor: string
-
-  @Field((type) => [TagCreateInput], { nullable: true })
-  tags: [TagCreateInput]
 }
 
 @InputType()
@@ -44,25 +39,7 @@ export class NoteUpdateInput {
 
   @Field({ nullable: true })
   cardColor: string
-
-  @Field((type) => [TagCreateInput], { nullable: true })
-  tags: [TagCreateInput]
 }
-
-@InputType()
-class NoteOrderByUpdatedAtInput {
-  @Field((type) => SortOrder)
-  updatedAt: SortOrder
-}
-
-enum SortOrder {
-  asc = "asc",
-  desc = "desc",
-}
-
-registerEnumType(SortOrder, {
-  name: "SortOrder",
-})
 
 @Resolver(Note)
 export class NoteResolver {
@@ -77,17 +54,6 @@ export class NoteResolver {
         },
       })
       .user()
-  }
-
-  @ResolveField()
-  async tags(@Root() note: Note, @Context() ctx): Promise<Tag[]> {
-    return this.prismaService.note
-      .findUnique({
-        where: {
-          id: note.id,
-        },
-      })
-      .tags()
   }
 
   @Query((returns) => Note, { nullable: true })

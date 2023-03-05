@@ -1,5 +1,4 @@
 const ch1 = {
-  tags: ["Ch. 1"],
   content: `3 May. Bistritz.—Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late. Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets. I feared to go very far from the station, as we had arrived late and would start as near the correct time as possible. The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.
 
   We left in pretty good time, and came after nightfall to Klausenburgh. Here I stopped for the night at the Hotel Royale. I had for dinner, or rather supper, a chicken done up some way with red pepper, which was very good but thirsty. (Mem., get recipe for Mina.) I asked the waiter, and he said it was called “paprika hendl,” and that, as it was a national dish, I should be able to get it anywhere along the Carpathians. I found my smattering of German very useful here; indeed, I don't know how I should be able to get on without it.
@@ -75,15 +74,10 @@ const ch1 = {
   When I could see again the driver was climbing into the calèche, and the wolves had disappeared. This was all so strange and uncanny that a dreadful fear came upon me, and I was afraid to speak or move. The time seemed interminable as we swept on our way, now in almost complete darkness, for the rolling clouds obscured the moon. We kept on ascending, with occasional periods of quick descent, but in the main always ascending. Suddenly, I became conscious of the fact that the driver was in the act of pulling up the horses in the courtyard of a vast ruined castle, from whose tall black windows came no ray of light, and whose broken battlements showed a jagged line against the moonlit sky.`,
 }
 
-// const ch1 = {
-//   tags: ["Ch. 1", "Jonathan Harker"],
-//   content: `3 May. Bistritz.—Left Munich at 8:35 P. M., on 1st May, arriving at Vienna early next morning; should have arrived at 6:46, but train was an hour late. Buda-Pesth seems a wonderful place, from the glimpse which I got of it from the train and the little I could walk through the streets. I feared to go very far from the station, as we had arrived late and would start as near the correct time as possible. The impression I had was that we were leaving the West and entering the East; the most western of splendid bridges over the Danube, which is here of noble width and depth, took us among the traditions of Turkish rule.`,
-// }
-
 const ch8 = {
-  tags: ["Ch. 8", "Mina Murray"],
   content: `Diary again. No sleep now, so I may as well write. I am too agitated to sleep. We have had such an adventure, such an agonising experience. I fell asleep as soon as I had closed my diary.... Suddenly I became broad awake, and sat up, with a horrible sense of fear upon me, and of some feeling of emptiness around me. The room was dark, so I could not see Lucy's bed; I stole across and felt for her. The bed was empty. I lit a match and found that she was not in the room. The door was shut, but not locked, as I had left it. I feared to wake her mother, who has been more than usually ill lately, so threw on some clothes and got ready to look for her. As I was leaving the room it struck me that the clothes she wore might give me some clue to her dreaming intention. Dressing-gown would mean house; dress, outside. Dressing-gown and dress were both in their places. “Thank God,” I said to myself, “she cannot be far, as she is only in her nightdress.” I ran downstairs and looked in the sitting-room. Not there! Then I looked in all the other open rooms of the house, with an ever-growing fear chilling my heart. Finally I came to the hall door and found it open. It was not wide open, but the catch of the lock had not caught. The people of the house are careful to lock the door every night, so I feared that Lucy must have gone out as she was. There was no time to think of what might happen; a vague, overmastering fear obscured all details. I took a big, heavy shawl and ran out. The clock was striking one as I was in the Crescent, and there was not a soul in sight. I ran along the North Terrace, but could see no sign of the white figure which I expected. At the edge of the West Cliff above the pier I looked across the harbour to the East Cliff, in the hope or fear—I don't know which—of seeing Lucy in our favourite seat. There was a bright full moon, with heavy black, driving clouds, which threw the whole scene into a fleeting diorama of light and shade as they sailed across. For a moment or two I could see nothing, as the shadow of a cloud obscured St. Mary's Church and all around it. Then as the cloud passed I could see the ruins of the abbey coming into view; and as the edge of a narrow band of light as sharp as a sword-cut moved along, the church and the churchyard became gradually visible. Whatever my expectation was, it was not disappointed, for there, on our favourite seat, the silver light of the moon struck a half-reclining figure, snowy white. The coming of the cloud was too quick for me to see much, for shadow shut down on light almost immediately; but it seemed to me as though something dark stood behind the seat where the white figure shone, and bent over it. What it was, whether man or beast, I could not tell; I did not wait to catch another glance, but flew down the steep steps to the pier and along by the fish-market to the bridge, which was the only way to reach the East Cliff. The town seemed as dead, for not a soul did I see; I rejoiced that it was so, for I wanted no witness of poor Lucy's condition. The time and distance seemed endless, and my knees trembled and my breath came laboured as I toiled up the endless steps to the abbey. I must have gone fast, and yet it seemed to me as if my feet were weighted with lead, and as though every joint in my body were rusty. When I got almost to the top I could see the seat and the white figure, for I was now close enough to distinguish it even through the spells of shadow. There was undoubtedly something, long and black, bending over the half-reclining white figure. I called in fright, “Lucy! Lucy!” and something raised a head, and from where I was I could see a white face and red, gleaming eyes. Lucy did not answer, and I ran on to the entrance of the churchyard. As I entered, the church was between me and the seat, and for a minute or so I lost sight of her. When I came in view again the cloud had passed, and the moonlight struck so brilliantly that I could see Lucy half reclining with her head lying over the back of the seat. She was quite alone, and there was not a sign of any living thing about.`,
 }
+
 const fs = require("fs")
 
 const chapters = [ch1]
@@ -129,9 +123,6 @@ const generateContent = () => {
       let content = chapter.content.slice(startIndex, endIndex)
       if (content.length >= 20) {
         notes.push({
-          // id: id,
-          // tags: { connect: { name: chapter.tags[0] } },
-          tags: { connect: { id: 1 } },
           content: content,
           textColor: colors[Math.floor(Math.random() * colors.length)],
           cardColor: colors[Math.floor(Math.random() * colors.length)],
@@ -142,7 +133,6 @@ const generateContent = () => {
     }
   })
 
-  // console.log(notes)
   fs.writeFile(
     "/Users/troy/2023-work/draceton/test.json",
     JSON.stringify(notes),
