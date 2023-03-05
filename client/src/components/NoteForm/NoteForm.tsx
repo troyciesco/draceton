@@ -41,7 +41,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
     trigger()
   }
 
-  const isInvalidEntry = content.length < 20 || content.length > 300
+  const isInvalidEntry = content.length < 0 || content.length > 300
 
   return (
     <form
