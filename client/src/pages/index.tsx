@@ -27,7 +27,7 @@ export default function Home() {
           <h1 className="mb-10 font-serif leading-tight text-center dark:text-white text-7xl">
             Note-taking so good
             <br />
-            <span className="text-red-600 font-creepster">it's scary</span>
+            <span className="text-rose-600 font-creepster">it's scary</span>
           </h1>
           <Auth />
           <DemoAccounts />

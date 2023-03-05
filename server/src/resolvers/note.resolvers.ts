@@ -68,7 +68,6 @@ export class NoteResolver {
     @Args("searchString", { nullable: true }) searchString: string,
     // TODO: this is basically fake auth currently
     @Args("email", { nullable: false }) email: string,
-    @Context() ctx,
   ) {
     const or = searchString
       ? {
@@ -85,7 +84,6 @@ export class NoteResolver {
   createNote(
     @Args("data") data: NoteCreateInput,
     @Args("userEmail") userEmail: string,
-    @Context() ctx,
   ): Promise<Note> {
     if (data.content.length < 20 || data.content.length > 300) {
       throw new UserInputError("Note must be between 20 and 300 characters.")
@@ -127,7 +125,6 @@ export class NoteResolver {
     @Args("noteId") id: number,
     // TODO: this is basically fake auth currently
     @Args("userEmail", { nullable: false }) email: string,
-    @Context() ctx,
   ): Promise<Note | null> {
     const note = await this.prismaService.note.findMany({
       where: { id: id || undefined, user: { email: { equals: email } } },

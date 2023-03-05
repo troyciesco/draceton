@@ -1,10 +1,13 @@
 import { GraphQLClient } from "graphql-request"
 
 export const api = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL || "")
-// export const api = new GraphQLClient(process.env.NEXT_PUBLIC_API_URL || "", { headers: { credentials: "include" } })
 
-// @ts-ignore
-export const fetcher: any = async ({ query, variables }) => {
+type FetcherArgs = {
+  query: string
+  variables: Record<any, any>
+}
+
+export const fetcher: any = async ({ query, variables }: FetcherArgs) => {
   try {
     const res = await api.request(query, variables || {})
     return res

@@ -23,7 +23,7 @@ function NoteCard({ note, onRevalidate }: NoteCardProps) {
     <>
       <div
         className={classNames(
-          "relative px-8 py-10 transition-all rounded-lg shadow-md hover:shadow-lg w-72 md:w-80 group",
+          "relative px-8 py-10 transition-all drac-radius shadow-md hover:shadow-lg w-72 md:w-80 group",
           `bg-${note.cardColor}-200 shadow-${note.textColor}-700/70 hover:shadow-${note.textColor}-700/70`
         )}>
         <p className={classNames("break-words", `text-${note.textColor}-700`)}>{note.content}</p>
@@ -36,7 +36,7 @@ function NoteCard({ note, onRevalidate }: NoteCardProps) {
           </Link>
           <button onClick={() => setIsDeleteModalOpen(true)}>
             <span className="sr-only">Delete</span>
-            <TrashIcon className="w-6 h-6 transition-all fill-red-400 hover:fill-red-600" />
+            <TrashIcon className="w-6 h-6 transition-all fill-rose-400 hover:fill-rose-600" />
           </button>
         </div>
       </div>

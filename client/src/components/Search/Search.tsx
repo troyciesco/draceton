@@ -26,7 +26,7 @@ function Search({ setDebouncedSearchString, isLoading }: SearchProps) {
         <span className="sr-only">Search Notes</span>
         <input
           type="text"
-          className="w-full bg-white rounded-lg dark:bg-white/5"
+          className="w-full bg-white shadow-sm drac-radius border-slate-400 dark:bg-slate-500/20 shadow-slate-400/70 dark:border-slate-500 placeholder:text-slate-400"
           value={searchString}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setIsTyping(true)

@@ -33,7 +33,7 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
       onClose={onClose}
       title="Are you sure?"
       description="This note will be permanently deleted.">
-      <div className={classNames("relative px-8 py-10 rounded-lg shadow-lg w-80 mx-auto", `bg-${note.cardColor}-200`)}>
+      <div className={classNames("relative px-8 py-10 drac-radius shadow-lg w-80 mx-auto", `bg-${note.cardColor}-200`)}>
         <p className={classNames("break-words", `text-${note.textColor}-700`)}>{note.content}</p>
       </div>
 
@@ -48,7 +48,7 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
           disabled={isMutating}
           type="button"
           onClick={handleDelete}
-          className="flex items-center gap-1 px-4 py-2 text-white bg-red-500 rounded-lg cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed">
+          className="drac-btn drac-btn--danger">
           {isMutating ? "Deleting..." : "Delete Note"}
         </button>
       </div>

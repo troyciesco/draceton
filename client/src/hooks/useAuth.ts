@@ -1,31 +1,26 @@
+import { LogoutArgs } from "@/types"
 import { useRouter } from "next/router"
-import { Context, createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { useSWRConfig } from "swr"
 import { useCookie } from "./useCookie"
 
 const fakeAuth = {
   isAuthenticated: false,
-  signin(cb: any) {
+  signin(cb: () => void) {
     fakeAuth.isAuthenticated = true
     setTimeout(cb, 100) // fake async
   },
-  signout(cb: any) {
+  signout(cb: () => void) {
     fakeAuth.isAuthenticated = false
     setTimeout(cb, 100)
   },
 }
 
-type AuthProps = {
-  user: string | null
-  isAuthLoading: boolean
-  handleLogin: any
-  handleLogout: any
-}
 export const AuthContext = createContext({
-  user: "",
+  user: "" as string | null,
   isAuthLoading: false,
   handleLogin: (email: string) => {},
-  handleLogout: ({ shouldRedirect }: any) => {},
+  handleLogout: ({ shouldRedirect }: LogoutArgs) => {},
 })
 
 export function useAuth() {
@@ -53,7 +48,7 @@ export function useProvideAuth() {
     })
   }
 
-  const handleLogout = ({ shouldRedirect = true }): void => {
+  const handleLogout = ({ shouldRedirect = true }: LogoutArgs): void => {
     removeCookie("activeUser")
     return fakeAuth.signout(() => {
       mutate(

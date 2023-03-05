@@ -42,7 +42,7 @@ export class UserResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
   @ResolveField()
-  async notes(@Root() user: User, @Context() ctx): Promise<Note[]> {
+  async notes(@Root() user: User): Promise<Note[]> {
     return this.prismaService.user
       .findUnique({
         where: {
@@ -53,10 +53,7 @@ export class UserResolver {
   }
 
   @Mutation((returns) => User)
-  async signUpUser(
-    @Args("data") data: UserCreateInput,
-    @Context() ctx,
-  ): Promise<User> {
+  async signUpUser(@Args("data") data: UserCreateInput): Promise<User> {
     const noteData = data.notes?.map((note) => {
       return { content: note.content || undefined }
     })
@@ -80,7 +77,7 @@ export class UserResolver {
   }
 
   @Query((returns) => [User], { nullable: true })
-  async allUsers(@Context() ctx) {
+  async allUsers() {
     return this.prismaService.user.findMany()
   }
 }

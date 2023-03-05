@@ -9,7 +9,6 @@ import Head from "next/head"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import { useDebounce } from "react-use"
 import useSWR, { useSWRConfig } from "swr"
 import { myNotesQuery } from "@/gql/queries"
 import { Search } from "@/components/Search"
@@ -62,7 +61,7 @@ export default function Dashboard() {
             <h1 className="font-serif text-4xl">My Notes</h1>
             <Link
               href="/dashboard/notes?create=true"
-              className="flex items-center gap-1 px-4 py-2 text-white bg-blue-500 rounded-lg">
+              className="drac-btn">
               Add New Note <PlusIcon className="w-6 h-6" />
             </Link>
           </div>

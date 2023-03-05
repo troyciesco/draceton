@@ -14,10 +14,26 @@ body {
   &-radius {
     @apply rounded-lg;
   }
-  &-shadow {
-    @apply shadow-lg;
-  }
-  &-text {
-    @apply text-slate-800 dark:text-white;
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #ffffff;
+    background-color: #9f1239;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    font-size: 1rem;
+
+    &--xl {
+      padding: 0.75rem 1.25rem;
+      font-size: 1.5rem;
+    }
+
+    &--danger {
+      background-color: #e11d48;
+    }
   }
 }

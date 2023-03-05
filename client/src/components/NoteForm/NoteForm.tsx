@@ -53,13 +53,13 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
           <textarea
             rows={4}
             value={content}
-            className={classNames("rounded-lg shadow-sm", `text-${textColor}-700`, `bg-${cardColor}-200`)}
+            className={classNames("drac-radius shadow-sm", `text-${textColor}-700`, `bg-${cardColor}-200`)}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setContent(e.target.value)}
           />
         </label>
         <div className="flex justify-between">
           <span className="text-sm">Must be between 20 and 300 characters.</span>
-          <div className={classNames("flex items-center gap-1", isInvalidEntry ? "font-bold text-red-600" : "")}>
+          <div className={classNames("flex items-center gap-1", isInvalidEntry ? "font-bold text-rose-600" : "")}>
             {isInvalidEntry && <ExclamationTriangleIcon className="w-4 h-4" />}
             {content.length}
           </div>
@@ -69,7 +69,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
         <ColorSelect
           color={textColor}
           label="Text Color"
-          optionStyle={`text-${textColor}-700 dark:text-${textColor}-200`}
+          optionStyle={`text-${textColor}-700 dark:text-${textColor}-200 dark:bg-slate-700`}
           onChange={setTextColor}
         />
         <ColorSelect
@@ -80,7 +80,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
         />
       </div>
       <div className="flex items-center justify-between gap-4 mt-8">
-        <div>{errorMessage && <p className="font-bold text-red-600">{errorMessage}</p>}</div>
+        <div>{errorMessage && <p className="font-bold text-rose-600">{errorMessage}</p>}</div>
         <div className="flex justify-end gap-4 align-self-end">
           <button
             type="button"
@@ -91,7 +91,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
           <button
             disabled={isMutating || isInvalidEntry}
             type="submit"
-            className="flex items-center gap-1 px-4 py-2 text-white bg-blue-500 rounded-lg cursor-pointer disabled:bg-slate-400 disabled:cursor-not-allowed">
+            className="drac-btn">
             {isMutating ? "Submitting..." : submitButtonText}
           </button>
         </div>

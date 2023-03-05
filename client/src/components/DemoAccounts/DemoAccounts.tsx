@@ -16,12 +16,12 @@ function DemoAccounts() {
       <div className="flex items-center gap-4">
         <button
           onClick={() => switchUser("jonathan.harker@mailinator.com")}
-          className="flex items-center gap-1 px-4 py-2 text-white bg-blue-500 rounded-lg">
+          className="drac-btn">
           Jonathan Harker
         </button>
         <button
           onClick={() => switchUser("lucy.westerna@mailinator.com")}
-          className="flex items-center gap-1 px-4 py-2 text-white bg-blue-500 rounded-lg">
+          className="drac-btn">
           Lucy Westerna
         </button>
       </div>

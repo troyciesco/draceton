@@ -12,14 +12,10 @@ function ThemeToggle() {
 
   return (
     <button
-      className="flex items-center justify-center w-8 h-8 transition-all duration-300 bg-blue-100 rounded-lg dark:bg-slate-800 hover:ring-2 ring-blue-400 focus:outline-none"
+      className="flex items-center justify-center w-8 h-8 transition-all duration-300 bg-sky-100 drac-radius dark:bg-slate-800 hover:ring-2 ring-sky-400 focus:outline-none"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       aria-label="Toggle Dark Mode">
-      {theme === "light" ? (
-        <MoonIcon className="w-5 h-5 text-blue-500" />
-      ) : (
-        <SunIcon className="w-5 h-5 text-blue-400" />
-      )}
+      {theme === "light" ? <MoonIcon className="w-5 h-5 text-sky-500" /> : <SunIcon className="w-5 h-5 text-sky-400" />}
     </button>
   )
 }

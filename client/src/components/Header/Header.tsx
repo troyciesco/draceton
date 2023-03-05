@@ -10,7 +10,7 @@ function Header() {
         <Link
           href="/"
           className="font-serif text-4xl">
-          <span className="text-red-600">drac</span>
+          <span className="text-rose-600">drac</span>
           <span className="text-white">eton</span>
         </Link>
         {user && (
@@ -24,7 +24,7 @@ function Header() {
               </Link>
 
               <button
-                onClick={handleLogout}
+                onClick={() => handleLogout({ shouldRedirect: true })}
                 className="font-bold text-white hover:underline">
                 Sign Out
               </button>
