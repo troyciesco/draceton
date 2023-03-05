@@ -11,8 +11,7 @@ import { ApolloDriver, ApolloDriverConfig } from "@nestjs/apollo"
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       cors: {
-        origin: "*",
-        // credentials: true,
+        origin: true,
       },
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
