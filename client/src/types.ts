@@ -8,3 +8,7 @@ export type Note = {
 export type LogoutArgs = {
   shouldRedirect: boolean
 }
+
+export type CloseModalArgs = {
+  revalidate: boolean
+}

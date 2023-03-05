@@ -1,25 +1,9 @@
+import { signUpMutation } from "@/gql/mutations"
+import { findUserQuery } from "@/gql/queries"
 import { useAuth } from "@/hooks/useAuth"
 import { api, fetcher } from "@/utils"
-import { gql } from "graphql-request"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import useSWRMutation from "swr/mutation"
-
-const signUpMutation = gql`
-  mutation SignUpMutation($email: String!) {
-    signUpUser(data: { email: $email }) {
-      id
-      email
-    }
-  }
-`
-
-const findUserQuery = gql`
-  query FindUserQuery($email: String!) {
-    findUserByEmail(email: $email) {
-      id
-    }
-  }
-`
 
 function Auth() {
   const { user, handleLogin, handleLogout } = useAuth()
@@ -33,7 +17,7 @@ function Auth() {
     },
   })
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     if (user) {
       handleLogout({ shouldRedirect: false })

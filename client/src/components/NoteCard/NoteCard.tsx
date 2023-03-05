@@ -1,4 +1,4 @@
-import { Note } from "@/types"
+import { CloseModalArgs, Note } from "@/types"
 import { classNames } from "@/utils"
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/20/solid"
 import Link from "next/link"
@@ -12,7 +12,7 @@ type NoteCardProps = {
 
 function NoteCard({ note, onRevalidate }: NoteCardProps) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false)
-  const handleCloseModal = ({ revalidate }: any) => {
+  const handleCloseModal = ({ revalidate }: CloseModalArgs) => {
     if (revalidate) {
       onRevalidate()
     }

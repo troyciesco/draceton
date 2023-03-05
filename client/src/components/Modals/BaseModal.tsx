@@ -1,18 +1,20 @@
+import { CloseModalArgs } from "@/types"
 import { Dialog } from "@headlessui/react"
+import { ReactNode } from "react"
 
 type BaseModalProps = {
   isOpen: boolean
-  onClose: (args: any) => void
+  onClose: (args: CloseModalArgs) => void
   title: string
   description?: string
-  children: any
+  children: ReactNode
 }
 
 function BaseModal({ isOpen, onClose, title, description, children }: BaseModalProps) {
   return (
     <Dialog
       open={isOpen}
-      onClose={onClose}
+      onClose={() => onClose({ revalidate: false })}
       className="relative z-50">
       <div
         className="fixed inset-0 bg-black/50"

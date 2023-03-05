@@ -2,7 +2,7 @@ import { CreateNoteModal, EditNoteModal } from "@/components/Modals"
 import { LoadingCards } from "@/components/LoadingCards"
 import { NoteCard } from "@/components/NoteCard"
 import { useAuth } from "@/hooks/useAuth"
-import { Note } from "@/types"
+import { CloseModalArgs, Note } from "@/types"
 import { fetcher } from "@/utils"
 import { PlusIcon } from "@heroicons/react/20/solid"
 import Head from "next/head"
@@ -27,7 +27,7 @@ export default function Dashboard() {
     fetcher
   )
 
-  const handleCloseModal = ({ revalidate }: any) => {
+  const handleCloseModal = ({ revalidate }: CloseModalArgs) => {
     if (revalidate) {
       mutate({ query: myNotesQuery, variables })
     }
@@ -41,6 +41,9 @@ export default function Dashboard() {
   }, [user, isAuthLoading, router])
 
   const shouldShowSearch = !(data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString)
+  const noSearchResults = data?.myNotes && data?.myNotes.length === 0 && !isLoading && debouncedSearchString
+  const noUserNotes = data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString
+  const hasNotes = data?.myNotes && !isLoading
 
   return !user || isAuthLoading ? null : (
     <>
@@ -76,8 +79,7 @@ export default function Dashboard() {
           <section className="mb-20">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
               {isLoading && <LoadingCards />}
-              {data?.myNotes &&
-                !isLoading &&
+              {hasNotes &&
                 data.myNotes.map((note: Note) => {
                   return (
                     <NoteCard
@@ -89,12 +91,8 @@ export default function Dashboard() {
                 })}
             </div>
             <div>
-              {data?.myNotes && data?.myNotes.length === 0 && !isLoading && debouncedSearchString && (
-                <p>No notes match your search parameters.</p>
-              )}
-              {data?.myNotes && data?.myNotes.length === 0 && !isLoading && !debouncedSearchString && (
-                <p>No notes yet!</p>
-              )}
+              {noSearchResults && <p>No notes match your search parameters.</p>}
+              {noUserNotes && <p>No notes yet!</p>}
             </div>
           </section>
         </div>

@@ -2,13 +2,14 @@ import { useAuth } from "@/hooks/useAuth"
 import { BaseModal } from "./BaseModal"
 import useSWRMutation from "swr/mutation"
 import { classNames, fetcher } from "@/utils"
-import { Note } from "@/types"
+import { CloseModalArgs, Note } from "@/types"
 import { deleteNoteMutation } from "@/gql/mutations"
+import { FormEvent } from "react"
 
 type DeleteNoteModalProps = {
   isOpen: boolean
   note: Note
-  onClose: ({ revalidate = false }: any) => void
+  onClose: ({ revalidate = false }: CloseModalArgs) => void
 }
 
 function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
@@ -17,12 +18,11 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
   const variables = { noteId: note.id, email: user }
   const { trigger, isMutating } = useSWRMutation({ query: deleteNoteMutation, variables }, fetcher, {
     onSuccess: () => {
-      console.log("success")
       onClose({ revalidate: true })
     },
   })
 
-  const handleDelete = (e: any) => {
+  const handleDelete = (e: FormEvent) => {
     e.preventDefault()
     trigger()
   }
@@ -44,13 +44,14 @@ function DeleteNoteModal({ note, isOpen, onClose }: DeleteNoteModalProps) {
           onClick={() => onClose({ revalidate: false })}>
           Cancel
         </button>
-        <button
-          disabled={isMutating}
-          type="button"
-          onClick={handleDelete}
-          className="drac-btn drac-btn--danger">
-          {isMutating ? "Deleting..." : "Delete Note"}
-        </button>
+        <form onSubmit={handleDelete}>
+          <button
+            disabled={isMutating}
+            type="submit"
+            className="drac-btn drac-btn--danger">
+            {isMutating ? "Deleting..." : "Delete Note"}
+          </button>
+        </form>
       </div>
     </BaseModal>
   )

@@ -2,10 +2,11 @@ import { useAuth } from "@/hooks/useAuth"
 import { BaseModal } from "./BaseModal"
 import { createNoteMutation } from "@/gql/mutations"
 import { NoteForm } from "../NoteForm"
+import { CloseModalArgs } from "@/types"
 
 type CreateNoteModalProps = {
   isOpen: boolean
-  onClose: ({ revalidate = false }: any) => void
+  onClose: ({ revalidate = false }: CloseModalArgs) => void
 }
 
 function CreateNoteModal({ isOpen, onClose }: CreateNoteModalProps) {

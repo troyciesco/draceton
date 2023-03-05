@@ -1,6 +1,6 @@
 import { classNames, fetcher } from "@/utils"
 import { ExclamationTriangleIcon } from "@heroicons/react/20/solid"
-import { useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { ColorSelect } from "./ColorSelect"
 import useSWRMutation from "swr/mutation"
 
@@ -8,7 +8,7 @@ type NoteFormProps = {
   onClose: any
   initialData?: any
   mutation: any
-  baseMutationVariables?: any
+  baseMutationVariables?: Record<any, any>
   submitButtonText: string
 }
 
@@ -36,7 +36,7 @@ function NoteForm({ initialData, mutation, baseMutationVariables = {}, onClose, 
     },
   })
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     trigger()
   }

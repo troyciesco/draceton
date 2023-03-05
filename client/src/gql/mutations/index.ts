@@ -25,3 +25,12 @@ export const deleteNoteMutation = gql`
     }
   }
 `
+
+export const signUpMutation = gql`
+  mutation SignUpMutation($email: String!) {
+    signUpUser(data: { email: $email }) {
+      id
+      email
+    }
+  }
+`

@@ -21,3 +21,11 @@ export const myNotesQuery = gql`
     }
   }
 `
+
+export const findUserQuery = gql`
+  query FindUserQuery($email: String!) {
+    findUserByEmail(email: $email) {
+      id
+    }
+  }
+`
