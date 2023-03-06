@@ -2,6 +2,7 @@
 ## Note-taking so good, it's scary
 
 website: https://draceton.vercel.app/
+loom walkthrough: https://www.loom.com/share/e023539c4e854458814fa9558e1f1265
 
 Draceton is a simple demo of a full-stack note-taking application with a little bit of a Dracula theme. 
 
